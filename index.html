@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mithvara | Manufacturer Direct Solar Infrastructure</title>
+    <link rel="icon" type="image/png" href="mithvara_logo1.png">    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mithvara-green': '#1A3E25',
+                        'charcoal': '#2C3E50',
+                        'alabaster': '#F9F7F3',
+                        'marigold': '#F2C94C',
+                        'akhand': '#E67E22',
+                    },
+                    fontFamily: {
+                        'lora': ['Lora', 'serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* CSS Charts & Visuals */
+        .pie-chart-ci { background: conic-gradient(#1A3E25 0% 70%, #E67E22 70% 100%); border-radius: 50%; }
+        .pie-chart-res { background: conic-gradient(#F2C94C 0% 40%, #2C3E50 40% 100%); border-radius: 50%; }
+        .pie-chart-peak { background: conic-gradient(#E67E22 0% 35%, #2C3E50 35% 100%); border-radius: 50%; }
+        
+        .dial-savings { background: conic-gradient(#1A3E25 0% 85%, #e2e8f0 85% 100%); border-radius: 50%; }
+        .dial-payback { background: conic-gradient(#E67E22 0% 30%, #e2e8f0 30% 100%); border-radius: 50%; }
+        
+        .inner-circle {
+            background-color: white; border-radius: 50%; position: absolute;
+            top: 12%; left: 12%; right: 12%; bottom: 12%;
+            display: flex; align-items: center; justify-content: center; flex-direction: column;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Glassmorphism for the software mockup */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Split Hero Hover Effects - ONLY ON DESKTOP */
+        @media (min-width: 768px) {
+            .split-side { transition: width 0.5s ease-in-out; }
+            #hero-container:hover .split-side { width: 50%; } 
+            #hero-container.hover-left .left-side { width: 65%; }
+            #hero-container.hover-left .right-side { width: 35%; }
+            #hero-container.hover-right .right-side { width: 65%; }
+            #hero-container.hover-right .left-side { width: 35%; }
+        }
+        
+        /* Hide scrollbar for tabs */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-montserrat text-charcoal bg-alabaster antialiased overflow-x-hidden">
+
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2 md:gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img src="mithvara_logo2.png" alt="Mithvara Logo Icon" class="h-8 md:h-12 w-auto mix-blend-multiply">
+                    <div class="flex flex-col justify-center">
+                        <span class="font-lora font-bold text-xl md:text-2xl text-mithvara-green leading-none tracking-wide">MITHVARA</span>
+                        <span class="font-montserrat text-[7px] md:text-[9px] font-bold text-akhand tracking-[0.2em] uppercase mt-0.5">Energy Solution</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex space-x-8 items-center font-semibold text-sm mr-4">
+                        <button onclick="setGlobalMode('commercial'); document.getElementById('audit-section').scrollIntoView();" class="text-charcoal hover:text-mithvara-green transition-colors">C&I / Business</button>
+                        <button onclick="setGlobalMode('residential'); document.getElementById('audit-section').scrollIntoView();" class="text-charcoal hover:text-mithvara-green transition-colors">Residential</button>
+                        <a href="#process" class="text-charcoal hover:text-mithvara-green transition-colors">Our Process</a>
+                    </div>
+                    <a href="#audit-section" class="bg-akhand text-white px-4 py-2 md:px-6 md:py-2.5 rounded-full text-xs md:text-base hover:bg-orange-600 transition-all shadow-md hover:shadow-lg whitespace-nowrap">Book Audit</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="hero-container" class="relative h-screen min-h-[750px] flex flex-col md:flex-row w-full overflow-hidden pt-20">
+        
+        <div class="left-side split-side relative w-full h-1/2 md:w-1/2 md:h-full flex flex-col justify-end pb-8 md:pb-16 items-center cursor-pointer group border-b-2 md:border-b-0 md:border-r-2 border-white/20" 
+             onmouseenter="if(window.innerWidth >= 768) document.getElementById('hero-container').classList.add('hover-left')" 
+             onmouseleave="if(window.innerWidth >= 768) document.getElementById('hero-container').classList.remove('hover-left')"
+             onclick="setGlobalMode('commercial'); document.getElementById('audit-section').scrollIntoView();">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center"></div>
+            <div class="absolute inset-0 bg-mithvara-green/80 group-hover:bg-mithvara-green/60 transition-all duration-500"></div>
+            <div class="relative z-10 text-center px-4 md:px-8 transition-transform duration-500 group-hover:scale-105">
+                <button class="bg-akhand text-white px-6 md:px-8 py-2 md:py-3 rounded-full text-sm md:text-base font-bold shadow-lg hover:bg-orange-500 transition-all">For My Business</button>
+            </div>
+        </div>
+
+        <div class="right-side split-side relative w-full h-1/2 md:w-1/2 md:h-full flex flex-col justify-end pb-8 md:pb-16 items-center cursor-pointer group"
+             onmouseenter="if(window.innerWidth >= 768) document.getElementById('hero-container').classList.add('hover-right')" 
+             onmouseleave="if(window.innerWidth >= 768) document.getElementById('hero-container').classList.remove('hover-right')"
+             onclick="setGlobalMode('residential'); document.getElementById('audit-section').scrollIntoView();">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center"></div>
+            <div class="absolute inset-0 bg-charcoal/80 group-hover:bg-charcoal/60 transition-all duration-500"></div>
+            <div class="relative z-10 text-center px-4 md:px-8 transition-transform duration-500 group-hover:scale-105">
+                <button class="bg-marigold text-mithvara-green px-6 md:px-8 py-2 md:py-3 rounded-full text-sm md:text-base font-bold shadow-lg hover:bg-yellow-400 transition-all">For My Home</button>
+            </div>
+        </div>
+
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-auto pointer-events-none flex flex-col justify-center items-center z-20">
+            <div class="bg-charcoal/70 backdrop-blur-md border border-white/20 p-6 md:p-8 rounded-2xl text-center max-w-3xl mx-auto shadow-2xl w-full">
+                <h1 class="font-lora text-2xl md:text-5xl font-bold text-white leading-tight mb-3 md:mb-4 drop-shadow-md">
+                    Manufacturer Direct.<br>Pan-India Network.<br><span class="text-marigold">Guaranteed Performance.</span>
+                </h1>
+                <p class="text-xs md:text-lg text-gray-200 font-medium leading-relaxed hidden sm:block">
+                    The strategic bridge connecting global solar excellence to India’s Enterprises and Homes. <strong class="text-white">Stop renting electricity; start owning your power.</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-16 md:py-24 bg-white relative z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                <div class="text-center group p-6 rounded-2xl hover:bg-alabaster transition-all border border-transparent hover:border-gray-100">
+                    <div class="w-16 h-16 mx-auto bg-mithvara-green/10 rounded-2xl flex items-center justify-center mb-6 text-mithvara-green group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m3-4h1m-1 4h1m-5 8h8"></path></svg>
+                    </div>
+                    <h3 class="font-lora text-xl font-bold text-charcoal mb-3">Directly Certified</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Factory-certified Tier-1 tech directly from global manufacturers. You get 100% genuine, ALMM-approved components with bankable 25-year warranties for your home or facility.
+                    </p>
+                </div>
+                <div class="text-center group p-6 rounded-2xl hover:bg-alabaster transition-all border border-transparent hover:border-gray-100">
+                    <div class="w-16 h-16 mx-auto bg-akhand/10 rounded-2xl flex items-center justify-center mb-6 text-akhand group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                    </div>
+                    <h3 class="font-lora text-xl font-bold text-charcoal mb-3">Standardized Execution</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Executed exclusively by our veteran partner (MFin). Our pan-India network follows strict SOPs ensuring zero roof damage and absolute safety—whether it's a 5kW home or 500kW factory.
+                    </p>
+                </div>
+                <div class="text-center group p-6 rounded-2xl hover:bg-alabaster transition-all border border-transparent hover:border-gray-100">
+                    <div class="w-16 h-16 mx-auto bg-marigold/20 rounded-2xl flex items-center justify-center mb-6 text-yellow-600 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h3 class="font-lora text-xl font-bold text-charcoal mb-3">Financial Asset Performance</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        We focus on lifetime ROI. From securing PM Surya Ghar subsidies for homes to Accelerated Depreciation (AD) for corporates, we ensure maximum financial yield and system uptime.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="audit-section" class="py-16 md:py-24 bg-charcoal relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-mithvara-green rounded-full filter blur-[100px] opacity-50 translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-akhand rounded-full filter blur-[100px] opacity-20 -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start">
+                
+                <div class="lg:col-span-4 lg:sticky lg:top-32">
+                    <h2 class="font-lora text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">Make Data-Driven Decisions.</h2>
+                    <p class="text-gray-300 text-xs md:text-sm leading-relaxed mb-6 border-l-2 border-akhand pl-4">
+                        Our experts don't just quote panels; we engineer financial assets. We analyze your electricity bills, integrate state-specific policies, and structure the optimal financing model for your exact roof.
+                    </p>
+                    
+                    <div class="bg-white/10 p-4 md:p-6 rounded-2xl border border-white/10 mb-6">
+                        <p class="text-[10px] md:text-xs text-marigold font-bold uppercase tracking-widest mb-3 md:mb-4">Select Audit Profile:</p>
+                        <div class="flex bg-charcoal rounded-full p-1 border border-white/20">
+                            <button id="btn-commercial" onclick="setGlobalMode('commercial')" class="flex-1 py-2 md:py-3 rounded-full text-xs md:text-sm font-bold transition-all bg-mithvara-green text-white shadow-md">Commercial (C&I)</button>
+                            <button id="btn-residential" onclick="setGlobalMode('residential')" class="flex-1 py-2 md:py-3 rounded-full text-xs md:text-sm font-bold text-gray-400 hover:text-white transition-all">Residential</button>
+                        </div>
+                    </div>
+
+                    <button onclick="openAuditForm()" class="bg-marigold text-charcoal px-6 py-3 md:px-8 md:py-4 rounded-full font-bold w-full hover:bg-yellow-400 transition-all shadow-[0_0_15px_rgba(242,201,76,0.3)]">
+                        Get Your Free Custom Audit
+                    </button>
+                </div>
+
+                <div class="lg:col-span-8 mt-8 lg:mt-0">
+                    <div class="glass-panel rounded-2xl overflow-hidden flex flex-col min-h-[600px] md:h-[650px]">
+                        <div class="bg-gray-100/90 border-b border-gray-200 px-4 py-3 flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-yellow-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <div class="text-[9px] md:text-xs font-bold text-charcoal uppercase tracking-widest flex items-center gap-1 md:gap-2">
+                                <svg class="w-3 h-3 md:w-4 md:h-4 text-mithvara-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                <span class="truncate">C&EPA Interactive Report</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row flex-1 overflow-hidden">
+                            
+                            <div class="w-full md:w-48 bg-white/50 border-b md:border-b-0 md:border-r border-gray-200 p-3 flex flex-row md:flex-col gap-2 overflow-x-auto md:overflow-y-auto no-scrollbar shrink-0">
+                                <button onclick="openTab(1)" id="tab-btn-1" class="tab-btn min-w-[130px] md:min-w-0 text-center md:text-left px-3 py-3 rounded-lg text-[10px] md:text-[11px] font-bold bg-mithvara-green text-white shadow-sm transition-all whitespace-nowrap md:whitespace-normal">Page 1:<br>Executive Summary</button>
+                                <button onclick="openTab(2)" id="tab-btn-2" class="tab-btn min-w-[130px] md:min-w-0 text-center md:text-left px-3 py-3 rounded-lg text-[10px] md:text-[11px] font-bold text-gray-600 hover:bg-white/80 transition-all border border-transparent whitespace-nowrap md:whitespace-normal">Page 2:<br>Energy Profile</button>
+                                <button onclick="openTab(3)" id="tab-btn-3" class="tab-btn min-w-[130px] md:min-w-0 text-center md:text-left px-3 py-3 rounded-lg text-[10px] md:text-[11px] font-bold text-gray-600 hover:bg-white/80 transition-all border border-transparent whitespace-nowrap md:whitespace-normal">Page 3:<br>Optimized Solution</button>
+                                <button onclick="openTab(4)" id="tab-btn-4" class="tab-btn min-w-[130px] md:min-w-0 text-center md:text-left px-3 py-3 rounded-lg text-[10px] md:text-[11px] font-bold text-gray-600 hover:bg-white/80 transition-all border border-transparent relative whitespace-nowrap md:whitespace-normal">Page 4:<br>Financial Model <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-akhand animate-pulse hidden md:block"></span></button>
+                                <button onclick="openTab(5)" id="tab-btn-5" class="tab-btn min-w-[130px] md:min-w-0 text-center md:text-left px-3 py-3 rounded-lg text-[10px] md:text-[11px] font-bold text-gray-600 hover:bg-white/80 transition-all border border-transparent whitespace-nowrap md:whitespace-normal">Page 5:<br>Legal & Govt Policy</button>
+                            </div>
+
+                            <div class="flex-1 bg-white p-4 md:p-8 overflow-y-auto relative">
+                                
+                                <div id="page-1" class="dashboard-page animate-fade-in block">
+                                    <div class="border-b-2 border-mithvara-green pb-2 mb-4 md:mb-6 flex justify-between items-end">
+                                        <h3 class="font-lora text-lg md:text-2xl font-bold text-mithvara-green">Executive Summary</h3>
+                                        <div class="text-right">
+                                            <p class="text-[7px] md:text-[9px] font-bold uppercase text-gray-400">Client Audit For:</p>
+                                            <p id="dyn-client-name" class="text-[10px] md:text-xs font-bold text-charcoal">Sharma Industries (C&I)</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-8">
+                                        <div class="flex flex-col items-center p-4 md:p-6 bg-alabaster rounded-2xl border border-gray-100">
+                                            <div class="w-32 h-32 md:w-40 md:h-40 dial-savings relative mb-2 md:mb-4 mx-auto">
+                                                <div class="inner-circle">
+                                                    <span class="text-[8px] md:text-[10px] text-gray-500 font-bold uppercase mb-1 text-center">Potential Annual Savings</span>
+                                                    <span id="dyn-savings" class="text-lg md:text-2xl font-black text-mithvara-green">₹ 14,50,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col items-center p-4 md:p-6 bg-alabaster rounded-2xl border border-gray-100">
+                                            <div class="w-32 h-32 md:w-40 md:h-40 dial-payback relative mb-2 md:mb-4 mx-auto">
+                                                <div class="inner-circle">
+                                                    <span class="text-[8px] md:text-[10px] text-gray-500 font-bold uppercase mb-1 text-center">Projected Payback</span>
+                                                    <span id="dyn-payback" class="text-lg md:text-2xl font-black text-akhand">2.8 Years</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-mithvara-green/5 border-l-4 border-marigold p-3 md:p-4 rounded text-xs md:text-sm text-gray-700 leading-relaxed font-medium">
+                                        <span id="dyn-summary-note">Based on your 100kWp structural capacity, executing this project leverages 40% Accelerated Depreciation, transforming your energy expense into a high-yield corporate asset.</span>
+                                    </div>
+                                </div>
+
+                                <div id="page-2" class="dashboard-page animate-fade-in hidden">
+                                    <h3 class="font-lora text-lg md:text-2xl font-bold text-charcoal border-b-2 border-gray-200 pb-2 mb-4 md:mb-6">Current Energy Profile</h3>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                                        <div class="md:col-span-2">
+                                            <p class="text-[10px] md:text-xs font-bold text-gray-500 uppercase mb-4">12-Month Consumption (kWh)</p>
+                                            <div class="h-32 md:h-40 flex items-end justify-between gap-1 border-b border-gray-300 pb-1">
+                                                <div class="w-full bg-blue-200 h-[60%] rounded-t-sm"></div><div class="w-full bg-blue-300 h-[70%] rounded-t-sm"></div>
+                                                <div class="w-full bg-blue-400 h-[90%] rounded-t-sm"></div><div class="w-full bg-blue-500 h-[100%] rounded-t-sm"></div>
+                                                <div class="w-full bg-blue-600 h-[95%] rounded-t-sm"></div><div class="w-full bg-blue-500 h-[85%] rounded-t-sm"></div>
+                                                <div class="w-full bg-blue-400 h-[70%] rounded-t-sm"></div><div class="w-full bg-blue-300 h-[65%] rounded-t-sm"></div>
+                                                <div class="w-full bg-blue-200 h-[50%] rounded-t-sm"></div><div class="w-full bg-blue-200 h-[45%] rounded-t-sm"></div>
+                                                <div class="w-full bg-blue-300 h-[55%] rounded-t-sm"></div><div class="w-full bg-blue-400 h-[75%] rounded-t-sm"></div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col items-center justify-center">
+                                            <p class="text-[10px] font-bold text-gray-500 uppercase mb-2">Peak Usage Split</p>
+                                            <div class="w-20 h-20 md:w-24 md:h-24 pie-chart-peak mb-2"></div>
+                                            <p class="text-[8px] md:text-[9px] text-gray-500">Daytime vs Nighttime</p>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 text-center">
+                                            <p class="text-[9px] md:text-[10px] uppercase text-gray-500 font-bold mb-1">Current Avg Tariff</p>
+                                            <p id="dyn-tariff" class="text-lg md:text-xl font-black text-charcoal">₹ 9.50 / Unit</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 text-center">
+                                            <p class="text-[9px] md:text-[10px] uppercase text-gray-500 font-bold mb-1">Sanctioned Load</p>
+                                            <p id="dyn-load" class="text-lg md:text-xl font-black text-charcoal">120 kW</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="page-3" class="dashboard-page animate-fade-in hidden">
+                                    <h3 class="font-lora text-lg md:text-2xl font-bold text-mithvara-green border-b-2 border-mithvara-green pb-2 mb-4 md:mb-6">Optimized Solution</h3>
+                                    
+                                    <div class="w-full h-32 md:h-48 bg-gray-200 rounded-xl mb-6 relative overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1592833159155-c62df1b65634?auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                        <div class="absolute bottom-3 left-3 md:bottom-4 md:left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg border border-gray-200">
+                                            <p class="text-[8px] md:text-[9px] text-gray-500 uppercase font-bold">System Capacity</p>
+                                            <p id="dyn-capacity" class="text-sm md:text-lg font-black text-mithvara-green">Total 100 kWp Proposed</p>
+                                        </div>
+                                    </div>
+
+                                    <p class="text-[9px] md:text-[10px] font-bold uppercase text-gray-500 mb-3 tracking-widest">Technology Blueprint</p>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="border border-gray-200 p-3 md:p-4 rounded-xl">
+                                            <p class="font-bold text-sm text-charcoal mb-1">Solar Modules</p>
+                                            <p class="text-xs md:text-sm text-gray-600 font-medium">Waaree / Adani Solar</p>
+                                            <p class="text-[9px] md:text-[10px] text-gray-400 mt-1">Tier-1, ALMM Approved, 540Wp Mono PERC Half-Cut.</p>
+                                        </div>
+                                        <div class="border border-gray-200 p-3 md:p-4 rounded-xl">
+                                            <p class="font-bold text-sm text-charcoal mb-1">Inverter Core</p>
+                                            <p class="text-xs md:text-sm text-gray-600 font-medium">Growatt / Solis</p>
+                                            <p class="text-[9px] md:text-[10px] text-gray-400 mt-1">Smart Grid-Tied Inverter with remote monitoring.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="page-4" class="dashboard-page animate-fade-in hidden h-full flex flex-col">
+                                    <h3 class="font-lora text-lg md:text-2xl font-bold text-charcoal border-b-2 border-marigold pb-2 mb-4 md:mb-6">Financial Model & ROI</h3>
+                                    
+                                    <div id="financial-ci" class="flex-grow flex flex-col">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-auto">
+                                            <div>
+                                                <p class="text-[9px] md:text-[10px] font-bold text-gray-500 uppercase mb-3">Payback Analysis (Years 0-10)</p>
+                                                <div class="relative h-24 md:h-32 border-l-2 border-b-2 border-gray-300">
+                                                    <div class="absolute bottom-1/3 w-full border-t border-dashed border-red-400"></div> 
+                                                    <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none"><path d="M0,120 Q50,110 100,80 T300,10" fill="none" stroke="#1A3E25" stroke-width="3"/></svg>
+                                                    <span class="absolute bottom-[35%] left-1/2 bg-red-100 text-red-600 text-[7px] md:text-[8px] font-bold px-1 rounded transform -translate-x-1/2">Breakeven: 2.8 Yrs</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col items-center">
+                                                <p class="text-[9px] md:text-[10px] font-bold text-gray-500 uppercase mb-3">Project Funding</p>
+                                                <div class="w-20 h-20 md:w-24 md:h-24 pie-chart-ci mb-3 mx-auto"></div>
+                                                <div class="flex gap-3 md:gap-4 text-[8px] md:text-[9px] font-bold text-gray-600 justify-center">
+                                                    <span class="flex items-center gap-1"><div class="w-2 h-2 bg-[#1A3E25] rounded-full"></div> 70% Term Loan</span>
+                                                    <span class="flex items-center gap-1"><div class="w-2 h-2 bg-[#E67E22] rounded-full"></div> 30% CAPEX</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mt-6">
+                                            <div class="bg-gray-50 rounded-xl p-3 md:p-4 border border-gray-200">
+                                                <p class="text-[9px] md:text-[10px] font-bold text-gray-500 uppercase mb-2">Year 1 Tax Advantage</p>
+                                                <div class="flex items-end gap-2 h-12 md:h-16 border-b border-gray-300 pb-1">
+                                                    <div class="w-1/2 bg-red-400 h-[100%] rounded-t-sm flex items-end justify-center pb-1"><span class="text-[7px] md:text-[8px] text-white font-bold px-1 text-center">Standard Tax</span></div>
+                                                    <div class="w-1/2 bg-green-500 h-[60%] rounded-t-sm flex items-end justify-center pb-1"><span class="text-[7px] md:text-[8px] text-white font-bold px-1 text-center">With 40% AD</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="bg-charcoal text-white rounded-xl p-4 flex flex-col justify-center items-center text-center shadow-lg border-t-4 border-marigold">
+                                                <p class="text-[8px] md:text-[9px] text-marigold uppercase tracking-widest font-bold mb-1">25-Year Operational Savings</p>
+                                                <p class="text-xl md:text-2xl font-black">₹ 3.8 Crores</p>
+                                                <p class="text-[7px] md:text-[8px] text-gray-400 mt-1">Direct EBITDA Addition</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="financial-res" class="flex-grow flex flex-col hidden">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-auto">
+                                            <div>
+                                                <p class="text-[9px] md:text-[10px] font-bold text-gray-500 uppercase mb-3">Cumulative Savings vs Grid</p>
+                                                <div class="relative h-24 md:h-32 border-l-2 border-b-2 border-gray-300">
+                                                    <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+                                                        <path d="M0,120 L300,0" fill="none" stroke="#E67E22" stroke-width="2" stroke-dasharray="4"/>
+                                                        <path d="M0,120 L300,110" fill="none" stroke="#1A3E25" stroke-width="3"/> 
+                                                    </svg>
+                                                    <span class="absolute top-2 right-2 text-[7px] md:text-[8px] text-akhand font-bold">Cost of Doing Nothing</span>
+                                                    <span class="absolute bottom-2 right-2 text-[7px] md:text-[8px] text-mithvara-green font-bold">Solar Ownership</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col items-center">
+                                                <p class="text-[9px] md:text-[10px] font-bold text-gray-500 uppercase mb-3">Capital Sourcing</p>
+                                                <div class="w-20 h-20 md:w-24 md:h-24 pie-chart-res mb-3 mx-auto"></div>
+                                                <div class="flex gap-3 md:gap-4 text-[8px] md:text-[9px] font-bold text-gray-600 justify-center">
+                                                    <span class="flex items-center gap-1"><div class="w-2 h-2 bg-[#2C3E50] rounded-full"></div> Self Fund / EMI</span>
+                                                    <span class="flex items-center gap-1"><div class="w-2 h-2 bg-[#F2C94C] rounded-full"></div> PM Surya Ghar</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mt-6">
+                                            <div class="bg-gray-50 rounded-xl p-3 md:p-4 border border-gray-200">
+                                                <p class="text-[9px] md:text-[10px] font-bold text-gray-500 uppercase mb-2">Monthly Cashflow Impact</p>
+                                                <div class="flex items-end gap-2 md:gap-4 h-12 md:h-16 border-b border-gray-300 pb-1 px-2 md:px-4">
+                                                    <div class="w-1/2 bg-red-400 h-[100%] rounded-t-sm flex items-end justify-center pb-1"><span class="text-[7px] md:text-[8px] text-white font-bold">Old Bill</span></div>
+                                                    <div class="w-1/2 bg-mithvara-green h-[60%] rounded-t-sm flex items-end justify-center pb-1"><span class="text-[7px] md:text-[8px] text-white font-bold">New EMI</span></div>
+                                                </div>
+                                                <p class="text-[7px] md:text-[8px] text-center text-mithvara-green font-bold mt-2">Cash-Flow Positive from Day 1</p>
+                                            </div>
+                                            <div class="bg-charcoal text-white rounded-xl p-4 flex flex-col justify-center items-center text-center shadow-lg border-t-4 border-akhand">
+                                                <p class="text-[8px] md:text-[9px] text-marigold uppercase tracking-widest font-bold mb-1">Lifetime Savings</p>
+                                                <p class="text-xl md:text-2xl font-black">₹ 18.5 Lakhs</p>
+                                                <p class="text-[7px] md:text-[8px] text-gray-400 mt-1">₹0 Electricity Bills for 25 Years</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="page-5" class="dashboard-page animate-fade-in hidden">
+                                    <h3 class="font-lora text-lg md:text-2xl font-bold text-charcoal border-b-2 border-mithvara-green pb-2 mb-4 md:mb-6">Legal & Policy</h3>
+                                    <p class="text-[10px] md:text-xs text-gray-600 mb-4 md:mb-6 font-medium">Mithvara handles 100% of the bureaucratic pipeline. You sign the application; we manage the execution.</p>
+                                    
+                                    <div class="space-y-3 md:space-y-4">
+                                        <div class="flex items-center gap-3 md:gap-4 bg-gray-50 p-2 md:p-3 rounded-lg border border-gray-200">
+                                            <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-charcoal text-white flex items-center justify-center text-xs md:text-sm font-bold shrink-0">1</div>
+                                            <div>
+                                                <p class="text-[10px] md:text-[11px] font-bold text-charcoal">National Portal Registration</p>
+                                                <p class="text-[8px] md:text-[9px] text-gray-500 hidden sm:block">Filing for initial feasibility and securing subsidy allocation.</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-3 md:gap-4 bg-gray-50 p-2 md:p-3 rounded-lg border border-gray-200">
+                                            <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-mithvara-green text-white flex items-center justify-center text-xs md:text-sm font-bold shrink-0">2</div>
+                                            <div>
+                                                <p class="text-[10px] md:text-[11px] font-bold text-charcoal">CEIG / DISCOM Approvals</p>
+                                                <p class="text-[8px] md:text-[9px] text-gray-500 hidden sm:block">Securing Chief Electrical Inspector safety clearances.</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-3 md:gap-4 bg-gray-50 p-2 md:p-3 rounded-lg border border-gray-200">
+                                            <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-marigold text-mithvara-green flex items-center justify-center text-xs md:text-sm font-bold shrink-0">3</div>
+                                            <div>
+                                                <p class="text-[10px] md:text-[11px] font-bold text-charcoal">Net-Meter Commissioning</p>
+                                                <p class="text-[8px] md:text-[9px] text-gray-500 hidden sm:block">Joint DISCOM inspection and grid synchronization.</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-3 md:gap-4 bg-gray-50 p-2 md:p-3 rounded-lg border border-gray-200">
+                                            <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-akhand text-white flex items-center justify-center text-xs md:text-sm font-bold shrink-0">4</div>
+                                            <div>
+                                                <p class="text-[10px] md:text-[11px] font-bold text-charcoal">Final Subsidy Credit</p>
+                                                <p class="text-[8px] md:text-[9px] text-gray-500 hidden sm:block">Submission of final commissioning reports for direct bank transfer.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-right text-[7px] md:text-[8px] text-gray-400 mt-6 font-bold uppercase">Executed by MFin Pvt. Ltd.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="py-16 md:py-24 bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="font-lora text-2xl md:text-3xl font-bold text-charcoal mb-4">Engineering Solutions Across Sectors</h2>
+                <div class="w-16 h-1 bg-akhand mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+                <div class="text-center p-4 md:p-6 bg-alabaster rounded-xl border border-gray-100">
+                    <svg class="w-6 h-6 md:w-8 md:h-8 mx-auto text-mithvara-green mb-2 md:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m3-4h1m-1 4h1m-5 8h8"></path></svg>
+                    <h4 class="font-bold text-[10px] md:text-xs text-charcoal">Manufacturing</h4>
+                </div>
+                <div class="text-center p-4 md:p-6 bg-alabaster rounded-xl border border-gray-100">
+                    <svg class="w-6 h-6 md:w-8 md:h-8 mx-auto text-mithvara-green mb-2 md:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    <h4 class="font-bold text-[10px] md:text-xs text-charcoal">Cold Storage</h4>
+                </div>
+                <div class="text-center p-4 md:p-6 bg-alabaster rounded-xl border border-gray-100">
+                    <svg class="w-6 h-6 md:w-8 md:h-8 mx-auto text-mithvara-green mb-2 md:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m3-4h1m-1 4h1m-5 8h8"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-3-3v6"></path></svg>
+                    <h4 class="font-bold text-[10px] md:text-xs text-charcoal">Hospitals & CRE</h4>
+                </div>
+                <div class="text-center p-4 md:p-6 bg-mithvara-green/5 rounded-xl border border-mithvara-green/20">
+                    <svg class="w-6 h-6 md:w-8 md:h-8 mx-auto text-mithvara-green mb-2 md:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    <h4 class="font-bold text-[10px] md:text-xs text-charcoal">Premium Homes</h4>
+                </div>
+                <div class="text-center p-4 md:p-6 bg-mithvara-green/5 rounded-xl border border-mithvara-green/20">
+                    <svg class="w-6 h-6 md:w-8 md:h-8 mx-auto text-mithvara-green mb-2 md:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <h4 class="font-bold text-[10px] md:text-xs text-charcoal">Housing Societies</h4>
+                </div>
+                <div class="text-center p-4 md:p-6 bg-alabaster rounded-xl border border-gray-100">
+                    <svg class="w-6 h-6 md:w-8 md:h-8 mx-auto text-mithvara-green mb-2 md:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
+                    <h4 class="font-bold text-[10px] md:text-xs text-charcoal">Institutions</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="process" class="py-16 md:py-24 bg-alabaster">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-lora text-2xl md:text-3xl font-bold text-charcoal mb-10 md:mb-16 text-center">The Mithvara Execution Journey</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6 relative">
+                <div class="hidden md:block absolute top-6 left-[10%] right-[10%] h-0.5 bg-gray-300 z-0"></div>
+
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-mithvara-green text-white font-black flex items-center justify-center text-lg md:text-xl mb-3 md:mb-4 shadow-lg border-4 border-alabaster">1</div>
+                    <h4 class="font-bold text-sm md:text-base text-charcoal mb-2">C&EPA Audit</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed max-w-xs">Free structural assessment & exact financial modeling.</p>
+                </div>
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-charcoal text-white font-black flex items-center justify-center text-lg md:text-xl mb-3 md:mb-4 shadow-lg border-4 border-alabaster">2</div>
+                    <h4 class="font-bold text-sm md:text-base text-charcoal mb-2">Customized Design</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed max-w-xs">3D shadow analysis and Tier-1 OEM tech selection.</p>
+                </div>
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-akhand text-white font-black flex items-center justify-center text-lg md:text-xl mb-3 md:mb-4 shadow-lg border-4 border-alabaster">3</div>
+                    <h4 class="font-bold text-sm md:text-base text-charcoal mb-2">Installation</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed max-w-xs">Industrial-grade execution focusing on zero property damage.</p>
+                </div>
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-marigold text-mithvara-green font-black flex items-center justify-center text-lg md:text-xl mb-3 md:mb-4 shadow-lg border-4 border-alabaster">4</div>
+                    <h4 class="font-bold text-sm md:text-base text-charcoal mb-2">Net-Metering</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed max-w-xs">We handle 100% of the DISCOM paperwork and lifetime support.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-8 md:py-12 bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 md:mb-8">Deploying Certified Tier-1 Technology</p>
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-16 opacity-50 grayscale font-montserrat">
+                <span class="font-black text-lg md:text-xl tracking-tighter">WAAREE</span>
+                <span class="font-black text-base md:text-lg tracking-tight">adani solar</span>
+                <span class="font-black text-lg md:text-xl">GROWATT</span>
+                <span class="font-black text-lg md:text-xl tracking-tight">TATA POWER</span>
+                <span class="font-bold text-xs md:text-sm border border-gray-800 px-2 md:px-3 py-1 rounded">ALMM Approved</span>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact" class="bg-charcoal text-white py-12 md:py-16 border-t-[8px] border-mithvara-green">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-white p-1.5 rounded-lg">
+                        <img src="mithvara_logo2.png" alt="Mithvara Logo Icon" class="h-8 md:h-12 w-auto">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-lora font-bold text-xl md:text-3xl text-marigold leading-none tracking-wide">MITHVARA</span>
+                        <span class="font-montserrat text-[8px] md:text-[10px] font-bold text-white tracking-[0.2em] uppercase mt-1">Energy Solution</span>
+                    </div>
+                </div>
+                <p class="text-xs md:text-sm text-gray-400 leading-relaxed pr-0 md:pr-8">Powering a sustainable future through data-driven engineering, transparent financial modeling, and direct manufacturer partnerships.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-base md:text-lg mb-4 md:mb-6 text-white border-b border-gray-700 pb-2">Contact Advisory</h4>
+                <p class="text-xs md:text-sm text-gray-300 mb-2 font-medium">+91 - 7499034994</p>
+                <p class="text-xs md:text-sm text-gray-300 mb-2 font-medium">himanshu@mithvara.com</p>
+                <p class="text-xs md:text-sm text-gray-400 mt-4">HQ: Nagpur, Maharashtra, India</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-base md:text-lg mb-4 md:mb-6 text-white border-b border-gray-700 pb-2">Execution Partner</h4>
+                <p class="text-xs md:text-sm text-gray-300 leading-relaxed">All primary installations engineered and executed exclusively by our veteran partner network:</p>
+                <p class="text-marigold font-bold mt-2">MFin Pvt. Ltd.</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pt-6 md:mt-12 md:pt-8 border-t border-gray-800 text-center flex flex-col md:flex-row justify-between items-center text-[10px] md:text-xs text-gray-500">
+            <span>&copy; 2024 Mithvara Energy Solution. All rights reserved.</span>
+            <div class="flex gap-4 md:gap-6 mt-3 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentMode = 'commercial'; // 'commercial' or 'residential'
+
+        function openAuditForm() {
+            if (currentMode === 'commercial') {
+                window.open('https://forms.gle/ZKM7QWx2TKgjdbN87', '_blank');
+            } else {
+                window.open('https://forms.gle/1JSE5umbF4TVb8KS8', '_blank');
+            }
+        }
+
+        function setGlobalMode(mode) {
+            currentMode = mode;
+            
+            const btnComm = document.getElementById('btn-commercial');
+            const btnRes = document.getElementById('btn-residential');
+            
+            if(mode === 'commercial') {
+                btnComm.className = "flex-1 py-2 md:py-3 rounded-full text-xs md:text-sm font-bold transition-all bg-mithvara-green text-white shadow-md";
+                btnRes.className = "flex-1 py-2 md:py-3 rounded-full text-xs md:text-sm font-bold text-gray-400 hover:text-white transition-all";
+                
+                document.getElementById('dyn-client-name').innerText = "Sharma Industries (C&I)";
+                document.getElementById('dyn-savings').innerText = "₹ 14,50,000";
+                document.getElementById('dyn-payback').innerText = "2.8 Years";
+                document.getElementById('dyn-summary-note').innerHTML = "Based on your 100kWp structural capacity, executing this project leverages <strong class='text-mithvara-green'>40% Accelerated Depreciation</strong>, transforming your energy expense into a high-yield corporate asset.";
+                document.getElementById('dyn-tariff').innerText = "₹ 9.50 / Unit";
+                document.getElementById('dyn-load').innerText = "120 kW";
+                document.getElementById('dyn-capacity').innerText = "Total 100 kWp Proposed";
+                
+                document.getElementById('financial-ci').classList.remove('hidden');
+                document.getElementById('financial-res').classList.add('hidden');
+
+            } else {
+                btnRes.className = "flex-1 py-2 md:py-3 rounded-full text-xs md:text-sm font-bold transition-all bg-mithvara-green text-white shadow-md";
+                btnComm.className = "flex-1 py-2 md:py-3 rounded-full text-xs md:text-sm font-bold text-gray-400 hover:text-white transition-all";
+
+                document.getElementById('dyn-client-name').innerText = "Verma Residence";
+                document.getElementById('dyn-savings').innerText = "₹ 85,000";
+                document.getElementById('dyn-payback').innerText = "3.5 Years";
+                document.getElementById('dyn-summary-note').innerHTML = "Based on your 5kWp requirement, we have structured this project to secure the <strong class='text-mithvara-green'>Max ₹78,000 PM Surya Ghar Subsidy</strong>, effectively eliminating your home electricity bill.";
+                document.getElementById('dyn-tariff').innerText = "₹ 7.20 / Unit";
+                document.getElementById('dyn-load').innerText = "7 kW";
+                document.getElementById('dyn-capacity').innerText = "Total 5 kWp Proposed";
+                
+                document.getElementById('financial-res').classList.remove('hidden');
+                document.getElementById('financial-ci').classList.add('hidden');
+            }
+
+            openTab(4);
+        }
+
+        function openTab(tabNum) {
+            document.querySelectorAll('.dashboard-page').forEach(el => el.classList.add('hidden'));
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn min-w-[130px] md:min-w-0 text-center md:text-left px-3 py-3 rounded-lg text-[10px] md:text-[11px] font-bold text-gray-600 hover:bg-white/80 transition-all border border-transparent whitespace-nowrap md:whitespace-normal";
+            });
+
+            document.getElementById('page-' + tabNum).classList.remove('hidden');
+            
+            let activeBtn = document.getElementById('tab-btn-' + tabNum);
+            activeBtn.className = "tab-btn min-w-[130px] md:min-w-0 text-center md:text-left px-3 py-3 rounded-lg text-[10px] md:text-[11px] font-bold bg-mithvara-green text-white shadow-sm transition-all whitespace-nowrap md:whitespace-normal";
+            
+            if(tabNum !== 4) {
+                document.getElementById('tab-btn-4').innerHTML = 'Page 4:<br>Financial Model <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-akhand animate-pulse hidden md:block"></span>';
+                document.getElementById('tab-btn-4').classList.add('relative');
+            } else {
+                document.getElementById('tab-btn-4').innerHTML = 'Page 4:<br>Financial Model';
+            }
+        }
+    </script>
+</body>
+</html>
